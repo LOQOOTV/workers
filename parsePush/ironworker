@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+iron_worker upload $1
