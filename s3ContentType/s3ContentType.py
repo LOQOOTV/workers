@@ -40,7 +40,8 @@ fileExt = {'png': {'Content-Type': 'image/png'}, 'jpe': {'Content-Type':'image/j
     'xml': {'Content-Type': 'text/xml'}, 'js': {'Content-Type': 'application/javascript'},
     'json': {'Content-Type': 'application/json'}, 'md': {'Content-Type': 'text/markdown'},
     'ogg': {'Content-Type': 'application/ogg'}, 'webp': {'Content-Type': 'image/webp'},
-    'm4v': {'Content-Type': 'video/mp3'},'eml': {'Content-Type': 'message/rfc822'}}
+    'm4v': {'Content-Type': 'video/mp3'},'eml': {'Content-Type': 'message/rfc822'},
+    'amr': {'Content-Type': 'audio/amr'}, '3gpp': {'Content-Type': 'audio/3gp'}}
 handler = fileExt.get(ext)
 key.copy(key.bucket, key.name, preserve_acl=True, metadata=handler)
 ironmq = IronMQ(host="mq-aws-us-east-1.iron.io",

@@ -1,6 +1,6 @@
 import sys, json
 import urlparse
-import cgi
+//import cgi
 
 class WorkerArgs:
     payload = None
