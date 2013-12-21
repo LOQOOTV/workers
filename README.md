@@ -1,7 +1,14 @@
-#LOQOOTV processes
+#![alt text] (http://loqoonet.com/loqootv/LTVlogo.png) presents  "THE CIRCUS"
+###A collection of scripts used to keep the circus @ #LOQOOTV executing.
 =====
 
-A collection of scripts used to keep the circus @ #LOQOOTVexecuting.
+
+
+
+
+![alt text](http://qigongmontreal.files.wordpress.com/2012/06/circus.jpg)
+
+
 
 These pieces of code perform various task from sending out welcome emails and tweets
 to adding and removing user event records to datastores and unified logs.
