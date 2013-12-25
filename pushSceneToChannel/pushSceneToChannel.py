@@ -30,9 +30,11 @@ except ValueError:
 
 u = contents 
 print contents
-networkName = hay("networkName:", ";type", u)
-networkEmail = hay("networkEmail:", ";", u )
-sceneType = hay("type:", ";sceneUrl:", u)
+timestamp = hay("timestamp:", ";eventType", u)
+//eventType = hay("eventType:", ";end", u)
+networkName = hay("networkName:", ";sceneType", u)
+networkEmail = hay("networkEmail:", ";timestamp", u )
+sceneType = hay("sceneType:", ";sceneUrl:", u)
 sceneUrl = hay("sceneUrl:", ";sceneName:", u)
 sceneName = hay("sceneName:", ";sceneDescp", u)
 sceneDescp = hay("sceneDescp:", ";sceneTag1", u)
@@ -47,7 +49,7 @@ try:
 except(NameError):
     networkEmail = ("helloworld@loqoo.tv")
     profileImage= gravatar(networkEmail)
-action = {'originalAudio': {'tv.loqoo.v4.ORIGINAL_VIDEO_SCENE'}, 'originalVideo': {'tv.loqoo.v4.ORIGINAL_AUDIO_SCENE'},
+action = {'originalVideo': {'tv.loqoo.v4.ORIGINAL_VIDEO_SCENE'}, 'originalAudio': {'tv.loqoo.v4.ORIGINAL_AUDIO_SCENE'},
 		'originalImage': {'tv.loqoo.v4.ORIGINAL_IMAGE_SCENE'}, 'originalScene': {'tv.loqoo.v4.ORIGINAL_SCENE'},
 		'thirdPartyAudio': {'tv.loqoo.v4.THIRDPARTY_AUDIO_SCENE'}, 'thirdPartyVideo': {'tv.loqoo.v4.THIRD_VIDEO_SCENE'},
 		'thirdPartyImage': {'tv.loqoo.v4.THIRDPARTY_IMAGE_SCENE'}, 'thirdPartyPlayStore': {'tv.loqoo.v4.THIRDPARTY_PLAYSTORE'},

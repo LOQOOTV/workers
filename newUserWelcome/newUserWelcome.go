@@ -33,8 +33,8 @@ func main() {
 	fmt.Println(name)
 	fmt.Println(email)
 
-	
-	sg := sendgrid.NewSendGridClient("loqootv", "zxcvbnM1")
+	sendgridPizza := os.Getenv("SENDGRID_PIZZA")	
+	sg := sendgrid.NewSendGridClient("loqootv", sendgridPizza)
     	message := sendgrid.NewMail()
     	message.AddTo(email)
     	message.AddToName(name)

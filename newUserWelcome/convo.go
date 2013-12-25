@@ -4,10 +4,13 @@ import "fmt"
 import "github.com/yanatan16/anaconda"
 
 func main() {
-
-	anaconda.SetConsumerKey("orwO5vps1L2tYqeZO5w7w")
-	anaconda.SetConsumerSecret("qyBUwuXTLEZWQRuGnieSfKSZ8GMp9aWdSvW5eJMg7M")
-	api := anaconda.NewTwitterApi("842877536-dKeG40Plx3ZIcISxcdS6jBPOeAeVHzJuaxlzJiDc", "ougcovWV0dLcFDfMzPtyJATpl887VOGCk5V9RVm6xkqmz")
+	soda := os.Getenv("TWITTER_SODA")
+	pizza := os.Getenv("TWITTER_PIZZA")
+	soda1 := os.Getenv("TWITTER_SODA1")
+	pizza1 :=os.Getenv("TWITTER_PIZZA1")
+	anaconda.SetConsumerKey(soda)
+	anaconda.SetConsumerSecret(pizza)
+	api := anaconda.NewTwitterApi(soda1, pizza1)
 		
 	f := "@dsfsdf"
 	if (string([]rune(f)[0])) == "@" {

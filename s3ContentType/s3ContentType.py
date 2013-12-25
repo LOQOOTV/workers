@@ -2,9 +2,13 @@ from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from boto.s3.bucket import Bucket
 from urlparse import urlparse
-import sys, json
+import sys, json, re
 from iron_mq import *
 
+def hay(begin, end, astring):
+       i = re.search(begin+'(.*)'+end, astring)
+       r = i.group(1)
+       return r
 
 payload = None
 payload_file = None
@@ -21,13 +25,20 @@ try:
 except ValueError:
 	pass	
 u = contents 
-url = urlparse(u)
+print u
+sceneUrl = hay("sceneUrl:", ";sceneName:", u)
+url = urlparse(sceneUrl)
+print url
 b = str(url.netloc)[0:11]   
+print b
 k = str(url.path)[1:50]
+print k
 ext = url.path.split(".")[1]
 c = S3Connection("AKIAJMHEGJ4MHAW3MZNQ", "6QIulJCW4k7SN0EE+UZ5oL4yBv1+FIK4YOh6YHkm")
 bucket = c.lookup(b)
+print bucket
 key = bucket.get_key(k)
+print key
 fileExt = {'png': {'Content-Type': 'image/png'}, 'jpe': {'Content-Type':'image/jpeg'}, 
     'jpg': {'Content-Type': 'image/jpeg'}, 'png': {'Content-Type': 'image/png'}, 
     'mp4': {'Content-Type': 'video/mpeg'}, 'mp3': {'Content-Type': 'audio/mpeg'}, 
@@ -43,6 +54,7 @@ fileExt = {'png': {'Content-Type': 'image/png'}, 'jpe': {'Content-Type':'image/j
     'm4v': {'Content-Type': 'video/mp3'},'eml': {'Content-Type': 'message/rfc822'},
     'amr': {'Content-Type': 'audio/amr'}, '3gpp': {'Content-Type': 'audio/3gp'}}
 handler = fileExt.get(ext)
+print handler
 key.copy(key.bucket, key.name, preserve_acl=True, metadata=handler)
 ironmq = IronMQ(host="mq-aws-us-east-1.iron.io",
                 project_id="528a52aa04b1ba0005000038",

@@ -1,5 +1,0 @@
-runtime "python"
-exec "pushS3UrlToApi.py"
-pip "requests"
-pip "iron_mq"
-full_remote_build true
