@@ -27,9 +27,12 @@ except ValueError:
         
 u = contents
 print u
-incomingUrl = urlparse(u)
+incomingUrl = urlparse(u).query
 print incomingUrl
-q = incomingUrl.parse_qs
+ok = parse_qs(urlparse(incomingUrl).query, keep_blank_values=True)
+print ok
+q = str(incomingUrl.parse_qs)
+q = urlparse.urlparse(incomingUrl).query
 print q[0], q[1],
 eventT = q['eventType']
 print eventT
