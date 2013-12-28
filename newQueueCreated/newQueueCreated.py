@@ -9,6 +9,7 @@ def addSubscriberToQueue(queue, networkName, subscriber):
 	url = queue
 	d = {'push_type': "multicast", 'error_queue': networkName+'Error', 'subscribers': [{"url": subscriberPushSceneToChannel}] }
 	r = requests.post(url, data=d)
+	return r
 
 payload = None
 payload_file = None
