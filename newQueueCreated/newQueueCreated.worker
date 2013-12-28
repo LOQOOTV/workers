@@ -1,3 +1,4 @@
 runtime "python"
 exec "newQueueCreated.py"
 pip "requests"
+pip "iron_mq"

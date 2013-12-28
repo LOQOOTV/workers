@@ -2,13 +2,29 @@
 import requests
 from urlparse import *
 import os, sys, json
+from iron_mq import *
 
 IRON_TOKEN = os.getenv('IRON_TOKEN')
 
-def addSubscriberToQueue(queue, networkName, subscriber):
-	url = queue
-	d = {'push_type': "multicast", 'error_queue': networkName+'Error', 'subscribers': [{"url": subscriberPushSceneToChannel}] }
-	r = requests.post(url, data=d)
+ironmq = IronMQ(host="mq-aws-us-east-1.iron.io",
+                project_id="52ba6fcb4c05a60009000001",
+                token="IRON_TOKEN",
+                protocol="https", port=443,
+                api_version=1,
+                config_file=None)
+
+def addSubscriberToQueue(q, name, subscriberUrl):
+	url = q
+        d = {	
+	    "push_type": "multicast",
+	    "error_queue": name+"error",
+	    "subscribers": [
+		{
+		    "url": subscriberUrl
+		}
+	    ]
+	}
+		r = requests.post(url, data=d)
 	return r
 
 payload = None
@@ -33,13 +49,10 @@ ok = parse_qsl(urlparse(u).query, keep_blank_values=True)
 print ok
 print (ok[0][0])
 eventType = (ok[0][1])
+networkName = (ok[1][1])
+subscriber1 = "https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth="+IRON_TOKEN
 if eventType == "newChannelQueueCreated":
-	print "Ok"
+	queue = ironmq.queue(networkName)
+	queue.add_subscribers(*[subscriber1])
 else:
     print "ko"
-networkName = (ok[1][1])
-print networkName
-#get networkName
-queue = ('https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=%s'%  (networkName, IRON_TOKEN))
-subscriberPushSceneToChannel = ('https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=%s'% IRON_TOKEN)
-addSubscriberToQueue(queue, networkName, subscriberPushSceneToChannel)
