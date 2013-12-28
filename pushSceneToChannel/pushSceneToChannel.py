@@ -31,7 +31,7 @@ except ValueError:
 u = contents 
 print contents
 timestamp = hay("timestamp:", ";eventType", u)
-//eventType = hay("eventType:", ";end", u)
+eventType = hay("eventType:", ";end", u)
 networkName = hay("networkName:", ";sceneType", u)
 networkEmail = hay("networkEmail:", ";timestamp", u )
 sceneType = hay("sceneType:", ";sceneUrl:", u)
