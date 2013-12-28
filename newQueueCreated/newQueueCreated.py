@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from requests import *
-from urlparse import *,
+from urlparse import *
 import os, sys, json
 
 IRON_TOKEN = os.getenv('IRON_TOKEN')
