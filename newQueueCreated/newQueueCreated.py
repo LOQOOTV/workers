@@ -29,7 +29,7 @@ u = contents
 print u
 incomingUrl = urlparse(u).query
 print incomingUrl
-ok = parse_qs(urlparse(u).query, keep_blank_values=True)
+ok = parse_qsl(urlparse(u).query, keep_blank_values=True)
 print ok
 print ok.eventType
 eventT = q['eventType']
