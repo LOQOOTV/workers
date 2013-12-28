@@ -31,7 +31,9 @@ incomingUrl = urlparse(u).query
 print incomingUrl
 ok = parse_qsl(urlparse(u).query, keep_blank_values=True)
 print ok
-print (ok[0]0])
+print (ok[0][0])
+
+print ok[0]
 eventT = q['eventType']
 print eventT
 networkName = "o"
