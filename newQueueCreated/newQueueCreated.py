@@ -30,9 +30,9 @@ print u
 incomingUrl = urlparse(u).query
 print incomingUrl
 ok = parse_qs(urlparse(incomingUrl).query, keep_blank_values=True)
-print ok
-q = str(incomingUrl.parse_qs)
 q = urlparse.urlparse(incomingUrl).query
+print ok
+print ok[0], ok['eventType']
 print q[0], q[1],
 eventT = q['eventType']
 print eventT
