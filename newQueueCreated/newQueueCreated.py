@@ -30,11 +30,12 @@ print incomingUrl
 q = incomingUrl.parse_qs
 eventT = q['eventType']
 print eventT
+networkName = "o"
 if eventT == "newChannelQueueCreated":
     print "ok"
 else:
     print "ko"
 #get networkName
-queue = 'https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=rhJuFZcZzPqj48eR471VvDu1O40'%s networkName
+queue = ('https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=rhJuFZcZzPqj48eR471VvDu1O40'%s networkName)
 subscriberPushSceneToChannel = 'https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=rhJuFZcZzPqj48eR471VvDu1O40'
 addSubscriberToQueue(self, queue, networkName, subscriberPushSceneToChannel)
