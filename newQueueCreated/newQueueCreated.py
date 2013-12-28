@@ -40,6 +40,6 @@ else:
 networkName = (ok[1][1])
 print networkName
 #get networkName
-queue = ('https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=%s'%  (networkName, IRON_TOKEN))
-subscriberPushSceneToChannel = ('https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=%s'% IRON_TOKEN)
-addSubscriberToQueue(self, queue, networkName, subscriberPushSceneToChannel)
+#queue = ('https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=%s'%  (networkName, IRON_TOKEN))
+#subscriberPushSceneToChannel = ('https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=%s'% IRON_TOKEN)
+#addSubscriberToQueue(self, queue, networkName, subscriberPushSceneToChannel)
