@@ -13,20 +13,6 @@ ironmq = IronMQ(host="mq-aws-us-east-1.iron.io",
                 api_version=1,
                 config_file=None)
 
-def addSubscriberToQueue(q, name, subscriberUrl):
-	url = q
-        d = {	
-	    "push_type": "multicast",
-	    "error_queue": name+"error",
-	    "subscribers": [
-		{
-		    "url": subscriberUrl
-		}
-	    ]
-	}
-		r = requests.post(url, data=d)
-	return r
-
 payload = None
 payload_file = None
 for i in range(len(sys.argv)):
