@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-
-from requests import *
+import requests
 from urlparse import *
 import os, sys, json
 
