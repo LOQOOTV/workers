@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 
 from requests import *
-from iron_mq import *
 import urlparse, os
 
 def addSubscriberToQueue(self, queue, networkName, subscriber):
