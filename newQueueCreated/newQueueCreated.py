@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from requests import *
-from urlparse *,
+from urlparse import *,
 import os, sys, json
 
 IRON_TOKEN = os.getenv('IRON_TOKEN')
@@ -30,6 +30,7 @@ print u
 incomingUrl = urlparse(u)
 print incomingUrl
 q = incomingUrl.parse_qs
+print q[0], q[1],
 eventT = q['eventType']
 print eventT
 networkName = "o"
