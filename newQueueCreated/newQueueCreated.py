@@ -3,6 +3,8 @@
 from requests import *
 import urlparse, os
 
+IRON_TOKEN = os.getenv('IRON_TOKEN')
+
 def addSubscriberToQueue(self, queue, networkName, subscriber):
 	url = queue
 	d = {'push_type': "multicast", 'error_queue': networkName+'Error', 'subscribers': [{"url": subscriberPushSceneToChannel}] }
@@ -35,6 +37,6 @@ if eventT == "newChannelQueueCreated":
 else:
     print "ko"
 #get networkName
-queue = ('https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=rhJuFZcZzPqj48eR471VvDu1O40'%  networkName)
-subscriberPushSceneToChannel = 'https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=rhJuFZcZzPqj48eR471VvDu1O40'
+queue = ('https://mq-aws-us-east-1.iron.io/projects/1/52ba6fcb4c05a60009000001/queues/%s?oauth=%s'%  (networkName, IRON_TOKEN)
+subscriberPushSceneToChannel = 'https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=%s'% IRON_TOKEN)
 addSubscriberToQueue(self, queue, networkName, subscriberPushSceneToChannel)
