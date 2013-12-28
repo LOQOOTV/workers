@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from requests import *
-import urlparse as ups, os, sys, json
+from urlparse *,
+import os, sys, json
 
 IRON_TOKEN = os.getenv('IRON_TOKEN')
 
@@ -26,7 +27,7 @@ except ValueError:
         
 u = contents
 print u
-incomingUrl = ups(u)
+incomingUrl = urlparse(u)
 print incomingUrl
 q = incomingUrl.parse_qs
 eventT = q['eventType']
