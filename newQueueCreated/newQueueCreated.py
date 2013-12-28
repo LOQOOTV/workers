@@ -39,6 +39,7 @@ networkName = (ok[1][1])
 subscriber1 = ("https://worker-aws-us-east-1.iron.io:443/2/projects/52ba6fcb4c05a60009000001/tasks/webhook?code_name=pushSceneToChannel&oauth=%s"% IRON_TOKEN) 
 if eventType == "newChannelQueueCreated":
 	queue = ironmq.queue(networkName)
-	queue.add_subscribers(*[subscriber1])
+	r = queue.add_subscribers(*[subscriber1])
+	print r
 else:
     print "ko"
