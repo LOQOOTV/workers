@@ -1,0 +1,4 @@
+runtime "python"
+exec "newNetworkQueueCreatedListerner.py"
+pip "requests"
+pip "iron_mq"

@@ -1,0 +1,5 @@
+runtime "python"
+exec "addSceneToUnifiedScenesTable.py"
+pip "boto"
+pip "simpleflake"
+

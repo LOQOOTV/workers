@@ -1,4 +1,4 @@
 runtime "python"
-exec "newQueueCreated.py"
+exec "unifiedLogListener.py"
 pip "requests"
 pip "iron_mq"

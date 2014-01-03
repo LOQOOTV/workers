@@ -1,13 +1,9 @@
 #!/usr/bin/env python
 
 import json,httplib, urllib
-from urlparse import urlparse
+from urlparse import *
 import sys, json, re, hashlib
 
-def hay(begin, end, astring):
-       i = re.search(begin+'(.*)'+end, astring)
-       r = i.group(1)
-       return r
 
 def gravatar(email,default="http://loqoonet.com/loqootv/LTVlogo.png",size=40):
 	gravatar_url = "http://www.gravatar.com/avatar/" + hashlib.md5(email.lower()).hexdigest() + "?"
@@ -28,28 +24,33 @@ try:
 except ValueError:
 	pass
 
-u = contents 
-print contents
-timestamp = hay("timestamp:", ";eventType", u)
-eventType = hay("eventType:", ";end", u)
-networkName = hay("networkName:", ";sceneType", u)
-networkEmail = hay("networkEmail:", ";timestamp", u )
-sceneType = hay("sceneType:", ";sceneUrl:", u)
-sceneUrl = hay("sceneUrl:", ";sceneName:", u)
-sceneName = hay("sceneName:", ";sceneDescp", u)
-sceneDescp = hay("sceneDescp:", ";sceneTag1", u)
-sceneTag1 = hay("sceneTag1:", ";sceneTag3", u)
-sceneTag3 = hay("sceneTag3:", ";scenePrice", u)
-print sceneTag3
-scenePrice = hay("scenePrice:", ";scenePriceDnom", u)
-scenePriceDnom = hay("scenePriceDnom:", ";sendToChannel", u)
-sendToChannel = hay("sendToChannel:", ";networkEmail", u)
+u = contents
+print u
+incomingUrl = urlparse(u).query
+print incomingUrl
+ok = parse_qsl(urlparse(u).query, keep_blank_values=True)
+print ok
+print (ok[0][0])
+eventType = (ok[0][1])
+networkName = (ok[1][1])  
+networkEmail = (ok[2][1]) 
+channelName = (ok[3][1]) 
+sceneType = (ok[4][1]) 
+sceneUrl = (ok[5][1]) 
+sceneName = (ok[6][1]) 
+sceneDescp = (ok[7][1]) 
+sceneTag1 = (ok[8][1]) 
+sceneTag3 = (ok[9][1]) 
+scenePrice = (ok[10][1]) 
+scenePriceDnom = (ok[11][1]) 
+timestamp = (ok[12][1])  
+
 try:
     profileImage = gravatar(networkEmail)
 except(NameError):
     networkEmail = ("helloworld@loqoo.tv")
     profileImage= gravatar(networkEmail)
-action = {'originalVideo': {'tv.loqoo.v4.ORIGINAL_VIDEO_SCENE'}, 'originalAudio': {'tv.loqoo.v4.ORIGINAL_AUDIO_SCENE'},
+action = {'originalVideo': {'tv.loqoo.v4.ORIGINAL_VIDEO_SCENE'}, 'originalAudio': {'tv.loqoo.ORIGINAL_AUDIO_SCENE'},
 		'originalImage': {'tv.loqoo.v4.ORIGINAL_IMAGE_SCENE'}, 'originalScene': {'tv.loqoo.v4.ORIGINAL_SCENE'},
 		'thirdPartyAudio': {'tv.loqoo.v4.THIRDPARTY_AUDIO_SCENE'}, 'thirdPartyVideo': {'tv.loqoo.v4.THIRD_VIDEO_SCENE'},
 		'thirdPartyImage': {'tv.loqoo.v4.THIRDPARTY_IMAGE_SCENE'}, 'thirdPartyPlayStore': {'tv.loqoo.v4.THIRDPARTY_PLAYSTORE'},
@@ -62,7 +63,7 @@ connection = httplib.HTTPSConnection('api.parse.com', 443)
 connection.connect()
 connection.request('POST', '/1/push', json.dumps({
        "channels": [
-          sendToChannel 
+          channelName 
        ],
        "data": {
          "action": xhandler,

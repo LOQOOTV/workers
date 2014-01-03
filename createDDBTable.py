@@ -15,16 +15,15 @@ conn = boto.dynamodb.connect_to_region(
 
 class DynamoDB ():
 
-	def createTable( self, keyName, keyType, rangeName=None, rangeType=None, tableName ):
-		message_table_schema = co.create_schema(
-        	hash_key_name=keyName,
-        	hash_key_proto_value=keyType,
-        	range_key_name=rangeName,
-        	range_key_proto_value=rangeType
-    )
-		table = conn.create_table(
-        	name= tableName,
-        	schema=message_table_schema,
-        	read_units=5,
-        	write_units=10
-    )
+
+	def createTable( self, tableName, hashKeyName, hashKeyType, rangeKeyName=None, rangeKeyType=None, 	 ):
+    		Table.create(tableName, schema=[
+			HashKey(hashKeyName, data_type = hashKeyType),
+			RangeKey(rangeKeyName, data_type = rangeKeyType)],
+			throughput{
+				'read': 5,
+				'write': 10,
+				},
+			indexes=[
+
+					]
