@@ -43,7 +43,7 @@ sceneTag3 = (ok[8][1])
 scenePrice = (ok[9][1]) 
 scenePriceDnom = (ok[10][1]) 
 if ok[11][1] == "":
-	networkAvatar = http://loqoonet.com/loqootv/LTVlogo.png
+	networkAvatar = "http://loqoonet.com/loqootv/LTVlogo.png"
 else:
 	networkAvatar = (ok[10][1])
 timestamp = (ok[12][1])  
