@@ -1,7 +1,7 @@
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 from boto.s3.bucket import Bucket
-from urlparse import urlparse
+from urlparse import * 
 import sys, json, re
 from iron_mq import *
 
@@ -24,9 +24,28 @@ try:
 	payload = json.loads(contents)
 except ValueError:
 	pass	
-u = contents 
-print u
-sceneUrl = hay("sceneUrl:", ";sceneName:", u)
+
+u = contents
+print u 
+incomingUrl = urlparse(u).query
+print incomingUrl
+ok = parse_qsl(urlparse(u).query, keep_blank_values=True)
+print ok
+print (ok[0][0])
+eventType = (ok[0][1])
+networkName = (ok[1][1])  
+networkEmail = (ok[2][1]) 
+channelName = (ok[3][1]) 
+sceneType = (ok[4][1]) 
+sceneUrl = (ok[5][1]) 
+sceneName = (ok[6][1]) 
+sceneDescp = (ok[7][1]) 
+sceneTag1 = (ok[8][1]) 
+sceneTag3 = (ok[9][1]) 
+scenePrice = (ok[10][1]) 
+scenePriceDnom = (ok[11][1]) 
+timestamp = (ok[12][1])  
+
 url = urlparse(sceneUrl)
 print url
 b = str(url.netloc)[0:11]   
@@ -56,12 +75,3 @@ fileExt = {'png': {'Content-Type': 'image/png'}, 'jpe': {'Content-Type':'image/j
 handler = fileExt.get(ext)
 print handler
 key.copy(key.bucket, key.name, preserve_acl=True, metadata=handler)
-ironmq = IronMQ(host="mq-aws-us-east-1.iron.io",
-                project_id="528a52aa04b1ba0005000038",
-                token="PCZjzFVSqBKKOn2lwfjvSa62S9E",
-                protocol="https", port=443,
-                api_version=1,
-                config_file=None)
-
-queue = ironmq.queue("pushS3Url2Api")
-queue.post(contents)

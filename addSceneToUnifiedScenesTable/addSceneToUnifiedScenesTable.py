@@ -34,39 +34,34 @@ channelName = (ok[3][1])
 sceneType = (ok[4][1]) 
 sceneUrl = (ok[5][1]) 
 
-sceneName = (ok[6][1]) 
-if sceneName == "":
-   sceneName = "#makeAscene"
-else:
-   pass
-sceneDescp = (ok[7][1]) 
+sceneDescp = (ok[6][1]) 
 if sceneDescp == "":
    sceneDescp = "loqootv"
 else:
    pass
-sceneTag1 = (ok[8][1]) 
+sceneTag1 = (ok[7][1]) 
 if sceneTag1 == "":
    sceneTag1 = "noTag"
 else:
    pass
-sceneTag3 = (ok[9][1])
+sceneTag3 = (ok[8][1])
 if sceneTag3 == "":
    sceneTag3 = "noTag"
 else:
    pass
-scenePrice = (ok[10][1]) 
+scenePrice = (ok[9][1]) 
 if scenePrice == "":
    scenePrice = "$0"
 else:
    pass
-scenePriceDnom = (ok[11][1])
+scenePriceDnom = (ok[10][1])
 if scenePriceDnom == "":
    scenePriceDnom = "ltv"
 else:
    pass
-print (ok[13][1])
-timestamp = int((ok[13][1]))
-networkAvatar = (ok[12][1])
+print (ok[12][1])
+timestamp = int((ok[12][1]))
+networkAvatar = (ok[11][1])
 if networkAvatar == "":
    networkAvatar = "http://loqoonet.com/loqootv/LTVlogo.png" 
 else:
@@ -86,7 +81,6 @@ item_dict = {
 		"channelName": channelName,
 		"sceneType": sceneType,
 		"sceneUrl": sceneUrl,
-		"sceneName": sceneName,
 		"sceneDescp": sceneDescp,
 		"sceneTag1": sceneTag1,
 		"sceneTag2": sceneTag3,

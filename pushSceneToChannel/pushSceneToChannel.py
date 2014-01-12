@@ -37,12 +37,12 @@ networkEmail = (ok[2][1])
 channelName = (ok[3][1]) 
 sceneType = (ok[4][1]) 
 sceneUrl = (ok[5][1]) 
-sceneName = (ok[6][1]) 
-sceneDescp = (ok[7][1]) 
-sceneTag1 = (ok[8][1]) 
-sceneTag3 = (ok[9][1]) 
-scenePrice = (ok[10][1]) 
-scenePriceDnom = (ok[11][1]) 
+sceneDescp = (ok[6][1]) 
+sceneTag1 = (ok[7][1]) 
+sceneTag3 = (ok[8][1]) 
+scenePrice = (ok[9][1]) 
+scenePriceDnom = (ok[10][1]) 
+networkAvatar = (ok[11][1]) 
 timestamp = (ok[12][1])  
 
 try:
@@ -68,6 +68,11 @@ connection.request('POST', '/1/push', json.dumps({
        "data": {
          "action": xhandler,
          "url": sceneUrl,
+	 "networkName": networkName,
+	 "networkAvatar": networkAvatar,
+	 "sceneDescp": sceneDescp,
+	 "sceneTag1": sceneTag1,
+	 "sceneTag3": sceneTag3
        }
      }), {
        "X-Parse-Application-Id": "fBzdHC1OLCMBmOCvzBLAplhvTtT9BvlJepf3qbab",
