@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-
-cd $1;
-iron_worker upload $1
-git add -A :/;
-git commit -m " $2 ";
-git push origin master;

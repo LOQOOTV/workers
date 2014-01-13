@@ -1,3 +1,0 @@
-runtime "python"
-exec "parsePush.py"
-full_remote_build true

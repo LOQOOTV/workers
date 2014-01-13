@@ -1,4 +1,0 @@
-runtime "python"
-exec "unifiedLogListener.py"
-pip "requests"
-pip "iron_mq"

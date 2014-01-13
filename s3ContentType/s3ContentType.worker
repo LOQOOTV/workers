@@ -1,4 +1,0 @@
-runtime "python"
-exec "s3ContentType.py"
-pip "boto"
-pip "iron-mq"

@@ -1,3 +1,0 @@
-runtime "python"
-exec "deleteQueue.py"
-pip "iron_mq"
